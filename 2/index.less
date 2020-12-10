@@ -1,0 +1,68 @@
+@long:60px;
+@short:40px;
+@fl:left;
+
+.mixi(){
+    width: 0;
+    height: 0;
+    float: @fl;
+}
+
+.mixin(@index) when(@index<=8){
+    div:nth-child(odd){
+      border-top: @long solid transparent;
+      border-bottom: @long solid transparent;
+      border-left: @long solid transparent;
+      border-right: @long solid transparent;  
+    }
+    div:nth-child(even){
+        border-top: @short solid transparent;
+        border-bottom: @short solid transparent;
+        border-left: @short solid transparent;
+        border-right: @short solid transparent;  
+      }
+    .mixin(@index+1);
+}
+.mixin(1);
+
+div:nth-child(1){
+    border-right: @long solid red;
+    .mixi();
+}
+
+div:nth-child(2){
+    border-right: @short solid blue;
+    .mixi();
+}
+
+div:nth-child(3){
+    border-top: @long solid red;
+    .mixi();
+}
+
+div:nth-child(4){
+    border-top: @short solid black;
+    .mixi();
+}
+
+div:nth-child(5){
+    border-left: @long solid red;
+    .mixi();
+}
+
+div:nth-child(6){
+    border-left: @short solid blue;
+    .mixi();
+}
+
+div:nth-child(7){
+    border-bottom: @long solid red;
+    .mixi();
+}
+
+div:nth-child(8){
+    border-bottom: @short solid blue;
+    .mixi();
+}
+
+
